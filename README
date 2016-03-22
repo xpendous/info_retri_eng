@@ -1,3 +1,11 @@
+# About the project
+# This project requires you to develop a complete information retrieval engine in Python, 
+# for efficient search in a large collection of (we)blog documents. The objective is to develop indexing and 
+# querying algorithms to support efficient ad-hoc document retrieval. A key focus of this project is 
+# critical analysis and experimental evaluation, for which you will need to report on the relative merits of 
+# several information retrieval methods.
+
+
 # The python version is 2.7.9
 # Please ensure the blogs folder and all files are in the same folder
 
