@@ -1,0 +1,32 @@
+# The python version is 2.7.9
+# Please ensure the blogs folder and all files are in the same folder
+
+# Data4Eval.dat is data for evaluation
+# invertedIndexFile.dat
+# qrels.february
+# stopwords.dat is my self-created stop words file
+# topics.txt is TREC topics
+# and two python files: createInvertedIndex.py and queryInvertedIndex.py
+
+1. if invertedIndexfile.dat(318.4 MB) does not exist, run:
+			python createInvertedIndex.py
+	it will take decades of seconds or several miniutes in terms of different system performance;
+	the first line of the generated file is number of posting lists, 
+	and the remaining lines are posting lists, containing tf and idf values;
+	the posting list format is:
+		word$tfvalues$idfvalue$blogid1:wordnum1[;blogid2:wordnum2...]
+
+2. run queryInvertedIndex.py to query:
+			python queryInvertedIndex.py
+	it will take a few seconds for reading the invertedIndexFile.dat, after that you can query what you want as the following three conditions:
+	a) single word query
+		return top 10(can be set by self.topRanks in python file) blog names according to the cosine similarity
+	b) multiple word query
+		return as a), but cannot guarantee one blog contains all the word
+	c) phrase query: words surrounded by "
+		return as a), every blog contains all the words and satisfy the sequence of them
+
+3. for TREC topics evaluation, run:
+			queryInvertedIndex.py qrels.february topics.txt 
+	also takes time to read the invertedIndexFile.dat, and the format of the output is:
+		retrieved docs number, retrieved relevant docs number, retrieved irrelevant number, all relevant number, average precision
